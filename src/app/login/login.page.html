@@ -1,20 +1,34 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-img src="../../assets/images/landscape.jpg"></ion-img>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-padding ion-margin">
+        <app-input-text
+          [typeOfInput]="'email'"
+          [labelText]="'Correo Electronico'"
+          [placeHolderText]="'introduce tu correo'">
+        </app-input-text>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-padding ion-margin">
+        <app-input-text
+          [typeOfInput]="'password'"
+          [labelText]="'Contraseña'"
+          [placeHolderText]="'contraseña'">
+        </app-input-text>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>4</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>5</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>6</ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
