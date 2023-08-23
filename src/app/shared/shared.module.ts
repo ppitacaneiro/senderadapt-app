@@ -2,13 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { IonicModule } from '@ionic/angular';
+import { InputTextComponent } from './components/input-text/input-text.component';
 
 @NgModule({
-  declarations: [NavbarComponent],
+  declarations: [
+    NavbarComponent,
+    InputTextComponent
+  ],
   imports: [
     CommonModule,
     IonicModule,
   ],
-  exports: [NavbarComponent]
+  exports: [
+    NavbarComponent,
+    InputTextComponent
+  ]
 })
 export class SharedModule { }
