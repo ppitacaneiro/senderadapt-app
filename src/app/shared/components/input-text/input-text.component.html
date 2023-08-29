@@ -2,6 +2,9 @@
   {{ labelText }}
 </ion-label>
 <ion-input 
+  (ngModelChange)="onChange($event)"
+  (blur)="onTouch()"
+  [(ngModel)]="inputText"
   class="custom-input"
   [type]="typeOfInput"
   [placeholder]="placeHolderText">
