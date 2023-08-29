@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
-import { LoginPage } from './login.page';
-
-import { LoginPageRoutingModule } from './login-routing.module';
+import { LoginPage } from './login/login.page';
+import { UserPageRoutingModule } from './user-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -13,9 +13,12 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    LoginPageRoutingModule,
+    UserPageRoutingModule,
     SharedModule
   ],
-  declarations: [LoginPage]
+  declarations: [
+    LoginPage,
+    RegisterComponent
+  ]
 })
-export class LoginPageModule {}
+export class UserPageModule {}
