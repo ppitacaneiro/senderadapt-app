@@ -1,3 +1,51 @@
-<p>
-  register works!
-</p>
+<app-navbar 
+  [isVisibleBackButton]="true"
+  [navBarText]="'Registro de usuario'">
+</app-navbar>
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col class="input-col">
+        <app-input-text
+          [typeOfInput]="'email'"
+          [labelText]="'Correo Electrónico'"
+          [placeHolderText]="'introduce tu correo'">
+        </app-input-text>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="input-col">
+        <app-input-text
+          [typeOfInput]="'text'"
+          [labelText]="'Nombre'"
+          [placeHolderText]="'introduce tu nombre'">
+        </app-input-text>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="input-col">
+        <app-input-text
+          [typeOfInput]="'password'"
+          [labelText]="'Contraseña'"
+          [placeHolderText]="'introduce tu contraseña'">
+        </app-input-text>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="input-col">
+        <app-input-text
+          [typeOfInput]="'password'"
+          [labelText]="'Repetir Contraseña'"
+          [placeHolderText]="'repite la contraseña'">
+        </app-input-text>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="input-button-col"> 
+        <app-button-primary 
+          [buttonText]="'Registrarse'">
+        </app-button-primary>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
