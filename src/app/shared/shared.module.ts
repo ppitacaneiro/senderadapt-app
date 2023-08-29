@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { IonicModule } from '@ionic/angular';
 import { InputTextComponent } from './components/input-text/input-text.component';
+import { ButtonPrimaryComponent } from './components/button-primary/button-primary.component';
 
 @NgModule({
   declarations: [
     NavbarComponent,
-    InputTextComponent
+    InputTextComponent,
+    ButtonPrimaryComponent,
   ],
   imports: [
     CommonModule,
@@ -15,7 +17,8 @@ import { InputTextComponent } from './components/input-text/input-text.component
   ],
   exports: [
     NavbarComponent,
-    InputTextComponent
+    InputTextComponent,
+    ButtonPrimaryComponent,
   ]
 })
 export class SharedModule { }
