@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar class="main-header">
+    <ion-buttons slot="start" *ngIf="isVisibleBackButton">
+      <ion-back-button defaultHref="user/login"></ion-back-button>
+    </ion-buttons>
     <ion-title class="text-title-header">
       {{ navBarText }}
     </ion-title>
