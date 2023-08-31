@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, forwardRef } from '@angular/core';
-import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-input-text',
@@ -22,12 +22,16 @@ export class InputTextComponent  implements OnInit, ControlValueAccessor {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+
+  }
 
   onChange: any = () => {}
   onTouch: any = () => {}
 
-  writeValue(obj: any): void {}
+  writeValue(obj: any): void {
+    this.inputText = obj;
+  }
 
   registerOnChange(fn: any): void {
     this.onChange = fn;
