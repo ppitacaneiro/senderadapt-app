@@ -5,12 +5,14 @@ import { IonicModule } from '@ionic/angular';
 import { InputTextComponent } from './components/input-text/input-text.component';
 import { ButtonPrimaryComponent } from './components/button-primary/button-primary.component';
 import { FormsModule } from '@angular/forms';
+import { FormErrorsComponent } from './components/form-errors/form-errors.component';
 
 @NgModule({
   declarations: [
     NavbarComponent,
     InputTextComponent,
     ButtonPrimaryComponent,
+    FormErrorsComponent,
   ],
   imports: [
     CommonModule,
@@ -21,6 +23,7 @@ import { FormsModule } from '@angular/forms';
     NavbarComponent,
     InputTextComponent,
     ButtonPrimaryComponent,
+    FormErrorsComponent,
   ]
 })
 export class SharedModule { }
