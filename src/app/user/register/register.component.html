@@ -8,21 +8,19 @@
       <ion-row>
         <ion-col class="input-col">
           <app-input-text
+            [formControl]="registerForm.controls['email']"
             [(ngModel)]="user.email"
             formControlName="email"
             [typeOfInput]="'email'"
             [labelText]="'Correo Electrónico'"
             [placeHolderText]="'introduce tu correo'">
           </app-input-text>
-          <app-form-errors 
-            [errors]="['required', 'email']"
-            *ngIf="email!.invalid && (email!.dirty || email!.touched)">
-          </app-form-errors>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col class="input-col">
           <app-input-text
+            [formControl]="registerForm.controls['name']"
             [(ngModel)]="user.name"
             formControlName="name"
             [typeOfInput]="'text'"
@@ -34,6 +32,7 @@
       <ion-row>
         <ion-col class="input-col">
           <app-input-text
+            [formControl]="registerForm.controls['password']"
             [(ngModel)]="user.password"
             formControlName="password"
             [typeOfInput]="'password'"
@@ -45,6 +44,7 @@
       <ion-row>
         <ion-col class="input-col">
           <app-input-text
+            [formControl]="registerForm.controls['repeatPassword']"
             [(ngModel)]="repeatPassword"
             formControlName="repeatPassword"  
             [typeOfInput]="'password'"

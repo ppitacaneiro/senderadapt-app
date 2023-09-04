@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { formErrors } from '../../constants/errors';
+import { AbstractControl, FormControl, ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'app-form-errors',
@@ -8,10 +8,10 @@ import { formErrors } from '../../constants/errors';
 })
 export class FormErrorsComponent  implements OnInit {
 
-  @Input() errors:string[] = [];
+  @Input() error:string = '';
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit(): void {}
 
 }

@@ -2,6 +2,7 @@ import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { User } from 'src/app/interfaces/user';
+import { formErrorsMessages } from 'src/app/shared/constants/errors';
 
 @Component({
   selector: 'app-register',
@@ -9,6 +10,8 @@ import { User } from 'src/app/interfaces/user';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent  implements OnInit {
+
+  public formErrorsMessages = formErrorsMessages;
 
   repeatPassword:string = '';
   user: User = {
@@ -44,6 +47,7 @@ export class RegisterComponent  implements OnInit {
   get name() { return this.registerForm.get('name'); }
   get email() { return this.registerForm.get('email'); }
   get password() { return this.registerForm.get('password'); }
+  get repeatPasswordForm() { return this.registerForm.get('repeatPassword'); }
 
   ngOnInit() {}
 

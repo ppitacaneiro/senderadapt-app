@@ -1,4 +1,5 @@
-export const formErrors = {
-    required: 'Este campo es obligatorio',
-    email: 'Debe ingresar un email válido',
+export const formErrorsMessages = {
+    REQUIRED: 'Este campo es obligatorio',
+    EMAIL: 'Debe ingresar un email válido',
+    MINLENGTH: 'Nº de caracteres insuficiente, mínimo ',
 };
