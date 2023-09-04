@@ -9,6 +9,7 @@ export class ButtonPrimaryComponent  implements OnInit {
 
   @Input() buttonText:string = "";
   @Input() buttonType:string = "button";
+  @Input() isDisabled:boolean = false;
 
   constructor() { }
 

@@ -56,6 +56,7 @@
       <ion-row>
         <ion-col class="input-button-col"> 
           <app-button-primary 
+            [isDisabled]="registerForm.invalid"
             [buttonType]="'submit'"
             [buttonText]="'Registrarse'">
           </app-button-primary>
