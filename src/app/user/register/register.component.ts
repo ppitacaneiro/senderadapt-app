@@ -1,3 +1,4 @@
+import { ToastService } from './../../services/toast.service';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -13,8 +14,6 @@ import { formErrorsMessages } from 'src/app/shared/constants/errors';
 export class RegisterComponent  implements OnInit {
 
   public formErrorsMessages = formErrorsMessages;
-
-  isToastOpen:boolean = false;
   repeatPassword:string = '';
   user: User = {
     name: '',
@@ -26,6 +25,7 @@ export class RegisterComponent  implements OnInit {
     private formBuilder:FormBuilder,
     private userService:UserService,
     private storageService:StorageService,
+    private toastService:ToastService,
   ) { }
   
   registerForm = this.formBuilder.group({
@@ -54,14 +54,11 @@ export class RegisterComponent  implements OnInit {
 
   ngOnInit() {}
 
-  setOpen(isOpen: boolean) {
-    this.isToastOpen = isOpen;
-  }
-
   onSubmit() {
     
+    // TODO: Custom validation for password and repeatPassword
     if (this.password?.value !== this.repeatPasswordForm?.value) {
-      this.isToastOpen = true;
+      this.toastService.presentToast('Las contraseñas no coinciden');
       return;
     }
 
@@ -71,12 +68,18 @@ export class RegisterComponent  implements OnInit {
       this.user.password = this.password!.value as string
       this.userService.register(this.user).subscribe({
         next: (res) => {
-          console.log(res);
           this.storageService.set('token', res.data.token)
-            .then(() => { console.log('guardado token'); })
-            .catch((err) => { console.log(err) });
+            .then(() => { 
+              this.toastService.presentToast('Usuario registrado correctamente');
+             })
+            .catch((err) => { 
+              this.toastService.presentToast('Se ha producido un error al guardar el token');
+              console.log(err) 
+            });
         },
         error: (err) => {
+          // TODO: Custom error messages for backend errors
+          this.toastService.presentToast('Se ha producido un error al registrar el usuario');
           console.log(err);
         },
       });
