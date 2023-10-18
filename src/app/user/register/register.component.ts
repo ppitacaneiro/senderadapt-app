@@ -2,6 +2,7 @@ import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { User } from 'src/app/interfaces/user';
+import { StorageService } from 'src/app/services/storage.service';
 import { formErrorsMessages } from 'src/app/shared/constants/errors';
 
 @Component({
@@ -23,7 +24,8 @@ export class RegisterComponent  implements OnInit {
 
   constructor(
     private formBuilder:FormBuilder,
-    private userService:UserService
+    private userService:UserService,
+    private storageService:StorageService,
   ) { }
   
   registerForm = this.formBuilder.group({
@@ -68,8 +70,15 @@ export class RegisterComponent  implements OnInit {
       this.user.name = this.name!.value as string;
       this.user.password = this.password!.value as string
       this.userService.register(this.user).subscribe({
-        next: res => console.log(res),
-        error: err => console.log(err),
+        next: (res) => {
+          console.log(res);
+          this.storageService.set('token', res.data.token)
+            .then(() => { console.log('guardado token'); })
+            .catch((err) => { console.log(err) });
+        },
+        error: (err) => {
+          console.log(err);
+        },
       });
     }
   }
