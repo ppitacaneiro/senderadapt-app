@@ -64,4 +64,10 @@
       </ion-row>
     </ion-grid>
   </form>
+  <ion-toast
+    [isOpen]="isToastOpen"
+    message="Las contraseñas no coinciden"
+    [duration]="5000"
+    (didDismiss)="setOpen(false)">
+  </ion-toast>
 </ion-content>

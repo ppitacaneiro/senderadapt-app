@@ -13,6 +13,7 @@ export class RegisterComponent  implements OnInit {
 
   public formErrorsMessages = formErrorsMessages;
 
+  isToastOpen:boolean = false;
   repeatPassword:string = '';
   user: User = {
     name: '',
@@ -42,7 +43,7 @@ export class RegisterComponent  implements OnInit {
       Validators.required,
       Validators.minLength(10)]
     ]
-  })
+  });
 
   get name() { return this.registerForm.get('name'); }
   get email() { return this.registerForm.get('email'); }
@@ -51,22 +52,26 @@ export class RegisterComponent  implements OnInit {
 
   ngOnInit() {}
 
+  setOpen(isOpen: boolean) {
+    this.isToastOpen = isOpen;
+  }
+
   onSubmit() {
-    // console.log(this.registerForm.valid);
-    // console.log('onSubmit',this.registerForm.value);
+    
+    if (this.password?.value !== this.repeatPasswordForm?.value) {
+      this.isToastOpen = true;
+      return;
+    }
 
-    console.log('onSubmit',this.user);
-
-    /*
-    this.userService.register(this.user).subscribe({
-      next: data => {
-        console.log('data',data);
-      },
-      error: error => {
-        console.log('error',error);
-      }
-    });
-    */
+    if (this.registerForm.valid) {
+      this.user.email = this.email!.value as string;
+      this.user.name = this.name!.value as string;
+      this.user.password = this.password!.value as string
+      this.userService.register(this.user).subscribe({
+        next: res => console.log(res),
+        error: err => console.log(err),
+      });
+    }
   }
 
 }
