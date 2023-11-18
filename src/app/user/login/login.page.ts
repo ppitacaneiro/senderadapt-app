@@ -1,3 +1,4 @@
+import { StorageService } from 'src/app/services/storage.service';
 import { ToastService } from './../../services/toast.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UserService } from './../../services/user.service';
@@ -19,6 +20,7 @@ export class LoginPage {
     private userService:UserService,
     private formBuilder:FormBuilder,
     private toastService:ToastService,
+    private storageService:StorageService,
   ) {}
 
   loginForm = this.formBuilder.group({
@@ -38,8 +40,14 @@ export class LoginPage {
 
     this.userService.login(this.emailValue,this.passwordValue).subscribe({
       next: (response) => {
-        if (response.success)
-          this.router.navigate(['/hickingtrail/search']);
+        if (response.success) {
+          this.storageService.set('token',response.data.token).then(() => {
+            this.router.navigate(['/hickingtrail/search']);
+          })
+          .catch((err) => {
+            console.log('error guardando token',err);
+          });
+        }
       },
       error: (err) => {
         console.log('error',err);
