@@ -3,12 +3,16 @@
 </app-navbar>
 <ion-content [fullscreen]="true">
   <ion-grid>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <ion-row>
       <ion-img src="../../assets/images/landscape.jpg"></ion-img>
     </ion-row>
     <ion-row>
       <ion-col class="input-col">
         <app-input-text
+          [formControl]="loginForm.controls['email']"
+          formControlName="email"
+          [(ngModel)]="emailValue"
           [typeOfInput]="'email'"
           [labelText]="'Correo Electronico'"
           [placeHolderText]="'introduce tu correo'">
@@ -18,6 +22,9 @@
     <ion-row>
       <ion-col class="input-col">
         <app-input-text
+          [formControl]="loginForm.controls['password']"
+          formControlName="password"
+          [(ngModel)]="passwordValue"
           [typeOfInput]="'password'"
           [labelText]="'Contraseña'"
           [placeHolderText]="'contraseña'">
@@ -27,6 +34,7 @@
     <ion-row>
       <ion-col class="input-button-col"> 
         <app-button-primary 
+          [buttonType]="'submit'"
           [buttonText]="'Iniciar Sesión'">
         </app-button-primary>
       </ion-col>
@@ -39,5 +47,6 @@
         </app-button-primary>
       </ion-col>
     </ion-row>
+  </form>
   </ion-grid>
 </ion-content>
