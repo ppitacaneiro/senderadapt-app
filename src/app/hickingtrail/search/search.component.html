@@ -1,3 +1,58 @@
-<ion-content>
-  <p>Hola</p>
+<app-menunavbar>
+</app-menunavbar>
+<ion-content class="main">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <app-button-primary
+          [buttonText]="'Registrar Ruta'">
+        </app-button-primary>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-padding ion-margin">
+        <div class="ion-text-center text-message">
+          <div class="main">
+            ¿Buscas una ruta <span class="secondary">cerca</span> 
+            de ti que se adapte a tus <span class="secondary">necesidades</span>?
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="search-form-container">
+          <ion-grid fixed>
+            <ion-row>
+              <ion-col>
+                <app-input-select></app-input-select>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <app-input-select></app-input-select>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <app-input-select></app-input-select>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <app-input-select></app-input-select>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <app-button-primary
+                  [buttonText]="'Buscar Rutas'">
+                </app-button-primary>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

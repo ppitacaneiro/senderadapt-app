@@ -6,6 +6,8 @@ import { InputTextComponent } from './components/input-text/input-text.component
 import { ButtonPrimaryComponent } from './components/button-primary/button-primary.component';
 import { FormsModule } from '@angular/forms';
 import { FormErrorsComponent } from './components/form-errors/form-errors.component';
+import { MenunavbarComponent } from './components/menunavbar/menunavbar.component';
+import { InputSelectComponent } from './components/input-select/input-select.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +15,8 @@ import { FormErrorsComponent } from './components/form-errors/form-errors.compon
     InputTextComponent,
     ButtonPrimaryComponent,
     FormErrorsComponent,
+    MenunavbarComponent,
+    InputSelectComponent
   ],
   imports: [
     CommonModule,
@@ -24,6 +28,8 @@ import { FormErrorsComponent } from './components/form-errors/form-errors.compon
     InputTextComponent,
     ButtonPrimaryComponent,
     FormErrorsComponent,
+    MenunavbarComponent,
+    InputSelectComponent
   ]
 })
 export class SharedModule { }
