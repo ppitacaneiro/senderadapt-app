@@ -7,6 +7,10 @@ const routes: Routes = [
     loadChildren: () => import('./user/user.module').then( m => m.UserPageModule)
   },
   {
+    path: 'hickingtrail',
+    loadChildren: () => import('./hickingtrail/hickingtrail.module').then( m => m.HickingtrailModule)
+  },
+  {
     path: '',
     redirectTo: 'user',
     pathMatch: 'full'

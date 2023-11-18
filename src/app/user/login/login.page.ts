@@ -39,7 +39,7 @@ export class LoginPage {
     this.userService.login(this.emailValue,this.passwordValue).subscribe({
       next: (response) => {
         if (response.success)
-          this.router.navigate(['/home']);
+          this.router.navigate(['/hickingtrail/search']);
       },
       error: (err) => {
         console.log('error',err);
