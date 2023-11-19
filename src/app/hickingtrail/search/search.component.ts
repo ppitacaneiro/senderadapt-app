@@ -1,3 +1,4 @@
+import { Community } from 'src/app/interfaces/community';
 import { HickingtrailService } from './../../services/hickingtrail.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent  implements OnInit {
 
+  communities:Community[] = [];
+
   constructor(private hickingtrailService:HickingtrailService) { }
 
   ngOnInit() {}
@@ -15,10 +18,10 @@ export class SearchComponent  implements OnInit {
   ionViewWillEnter() {
     this.hickingtrailService.getCommunities().subscribe({
       next: (data) => {
-        console.log(data);
+        this.communities = data;
       },
       error: (error) => {
-        console.log(error);
+        console.log('error recuperando listado de comunidades',error);
       }
     });
   }
