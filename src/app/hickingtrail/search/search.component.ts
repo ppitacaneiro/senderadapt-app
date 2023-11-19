@@ -10,18 +10,23 @@ import { Component, OnInit } from '@angular/core';
 export class SearchComponent  implements OnInit {
 
   communities:Community[] = [];
+  isLoading:boolean = true;
 
   constructor(private hickingtrailService:HickingtrailService) { }
 
   ngOnInit() {}
 
   ionViewWillEnter() {
+    this.isLoading = true;
     this.hickingtrailService.getCommunities().subscribe({
       next: (data) => {
         this.communities = data;
       },
       error: (error) => {
         console.log('error recuperando listado de comunidades',error);
+      },
+      complete: () => {
+        this.isLoading = false;
       }
     });
   }

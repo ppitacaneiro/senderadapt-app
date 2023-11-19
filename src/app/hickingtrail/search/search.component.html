@@ -1,7 +1,8 @@
 <app-menunavbar>
 </app-menunavbar>
 <ion-content class="main">
-  <ion-grid>
+  <ion-spinner color="primary" *ngIf="isLoading"></ion-spinner>
+  <ion-grid *ngIf="!isLoading">
     <ion-row>
       <ion-col>
         <app-button-primary
@@ -25,7 +26,13 @@
           <ion-grid fixed>
             <ion-row>
               <ion-col>
-                <app-input-select></app-input-select>
+                <app-input-select
+                  [placeholder]="'Seleccionar comunidad autónoma'"
+                  [valueOption]="'id'"
+                  [labelOption]="'name'"
+                  [options]="communities"
+                  [label]="'Comunidad autónoma'">
+                </app-input-select>
               </ion-col>
             </ion-row>
             <ion-row>
