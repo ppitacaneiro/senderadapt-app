@@ -1,3 +1,4 @@
+import { HickingtrailService } from './../../services/hickingtrail.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,8 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent  implements OnInit {
 
-  constructor() { }
+  constructor(private hickingtrailService:HickingtrailService) { }
 
   ngOnInit() {}
+
+  ionViewWillEnter() {
+    this.hickingtrailService.getCommunities().subscribe({
+      next: (data) => {
+        console.log(data);
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
+  }
 
 }
