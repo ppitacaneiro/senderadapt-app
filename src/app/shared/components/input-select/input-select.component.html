@@ -1,7 +1,10 @@
 <ion-item>
-  <ion-label>Pizza</ion-label>
-  <ion-select placeholder="Select Pizza">
-    <ion-select-option value="peperoni">Peperoni</ion-select-option>
-    <ion-select-option value="hawaii">Hawaii</ion-select-option>
+  <ion-label>{{ label }}</ion-label>
+  <ion-select [placeholder]="placeholder" class="custom-input">
+    <ion-select-option 
+      *ngFor="let option of options"
+      [value]="option.value">
+        {{ option.label }}
+      </ion-select-option>
   </ion-select>
 </ion-item>
