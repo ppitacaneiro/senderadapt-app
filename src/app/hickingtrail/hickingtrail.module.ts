@@ -1,3 +1,4 @@
+import { SearchResultsComponent } from './search-results/search-results.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -5,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 import { SharedModule } from '../shared/shared.module';
 import { SearchComponent } from './search/search.component';
 import { HickingtrailRoutingModule } from './hickingtrail-routing.module';
+import { HickingtrailCardComponent } from './shared/components/hickingtrail-card/hickingtrail-card.component';
 
 @NgModule({
   imports: [
@@ -16,7 +18,9 @@ import { HickingtrailRoutingModule } from './hickingtrail-routing.module';
     HickingtrailRoutingModule,
   ],
   declarations: [
-    SearchComponent
+    SearchComponent,
+    SearchResultsComponent,
+    HickingtrailCardComponent
   ],
 })
 export class HickingtrailModule { }

@@ -37,7 +37,7 @@
                   </app-input-select>
                 </ion-col>
               </ion-row>
-              <ion-row>
+              <ion-row *ngIf="provinces.length > 0">
                 <ion-col>
                   <app-input-select
                     (newItemEvent)="onNewProvince($event)"
@@ -49,7 +49,7 @@
                   </app-input-select>
                 </ion-col>
               </ion-row>
-              <ion-row>
+              <ion-row *ngIf="municipalities.length > 0">
                 <ion-col>
                   <app-input-select
                     formControlName="municipalitySelect"

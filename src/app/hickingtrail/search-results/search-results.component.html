@@ -1,0 +1,12 @@
+<app-navbar 
+  [isVisibleBackButton]="true"
+  [navBarText]="'Resultados de la búsqueda'">
+</app-navbar>
+<ion-content [fullscreen]="true">
+  <ion-spinner color="primary" *ngIf="isLoading"></ion-spinner>
+  <app-hickingtrail-card
+    *ngFor="let hickingTrail of hickingTrails"
+    [hickingTrail]="hickingTrail"
+  >
+  </app-hickingtrail-card>
+</ion-content>

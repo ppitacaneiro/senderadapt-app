@@ -1,3 +1,5 @@
+import { Search } from 'src/app/interfaces/search';
+import { ToastService } from './../../services/toast.service';
 import { Province } from 'src/app/interfaces/province';
 import { Community } from './../../interfaces/community';
 import { HickingtrailService } from './../../services/hickingtrail.service';
@@ -6,7 +8,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Municipality } from 'src/app/interfaces/municipality';
 import { DIFFICULTY_LEVELS } from 'src/app/shared/constants/difficulty-levels';
 import { DifficultyLevel } from 'src/app/interfaces/difficulty-level';
-import { Search } from 'src/app/interfaces/search';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -22,21 +24,21 @@ export class SearchComponent  implements OnInit {
   isLoading:boolean = true;
   search:Search = {
     community_id: 0,
-    province_id: 0,
-    municipality_id: 0,
     difficulty_level: ''
-  }
+  };
 
   constructor(
     private hickingtrailService:HickingtrailService,
     private formBuilder:FormBuilder,
+    private toastService:ToastService,
+    private router:Router
   ) { }
 
   searchForm = this.formBuilder.group({
-    communitySelect: [''],
+    communitySelect: ['',Validators.required],
     provinceSelect: [''],
     municipalitySelect: [''],
-    difficultyLevelSelect: ['']
+    difficultyLevelSelect: ['',Validators.required]
   });
 
   get communitySelect() { return this.searchForm.get('communitySelect'); }
@@ -44,6 +46,7 @@ export class SearchComponent  implements OnInit {
   get municipalitySelect() { return this.searchForm.get('municipalitySelect'); }
   get difficultyLevelSelect() { return this.searchForm.get('difficultyLevelSelect'); }
 
+  
   ngOnInit() {}
 
   ionViewWillEnter() {
@@ -62,11 +65,31 @@ export class SearchComponent  implements OnInit {
   }
 
   onSubmit() {
+    if (!this.searchForm.valid) {
+      this.toastService.presentToast('Debe seleccionar una comunidad y un nivel de dificultad');
+      return;
+    }
+
     this.search.community_id = Number(this.communitySelect?.value);
-    this.search.province_id = Number(this.provinceSelect?.value);
-    this.search.municipality_id = Number(this.municipalitySelect?.value);
-    // this.search.difficulty_level = this.difficultyLevelSelect?.value;
-    
+    this.search.difficulty_level = this.difficultyLevels.find(
+      (difficultyLevel) => difficultyLevel.id === Number(this.difficultyLevelSelect?.value)
+    )?.value || '';
+
+    if (this.provinceSelect?.value) {
+      this.search.province_id = Number(this.provinceSelect?.value);
+    }
+
+    if (this.municipalitySelect?.value) {
+      this.search.municipality_id = Number(this.municipalitySelect?.value);
+    }
+
+    this.router.navigate(['/hickingtrail/search-results'], { queryParams: this.search });
+
+    this.search = {
+      community_id: 0,
+      difficulty_level: ''
+    }
+    this.searchForm.reset();
   }
 
   onNewCommunity(idCommunity:number) {
