@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, forwardRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-input-select',
@@ -13,7 +13,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]
 })
-export class InputSelectComponent implements OnInit {
+export class InputSelectComponent implements OnInit,ControlValueAccessor {
 
   @Input() label: string = '';
   @Input() options: any[] = [];

@@ -6,6 +6,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Municipality } from 'src/app/interfaces/municipality';
 import { DIFFICULTY_LEVELS } from 'src/app/shared/constants/difficulty-levels';
 import { DifficultyLevel } from 'src/app/interfaces/difficulty-level';
+import { Search } from 'src/app/interfaces/search';
 
 @Component({
   selector: 'app-search',
@@ -19,6 +20,12 @@ export class SearchComponent  implements OnInit {
   municipalities:Municipality[] = [];
   difficultyLevels:DifficultyLevel[] = DIFFICULTY_LEVELS;
   isLoading:boolean = true;
+  search:Search = {
+    community_id: 0,
+    province_id: 0,
+    municipality_id: 0,
+    difficulty_level: ''
+  }
 
   constructor(
     private hickingtrailService:HickingtrailService,
@@ -29,7 +36,7 @@ export class SearchComponent  implements OnInit {
     communitySelect: [''],
     provinceSelect: [''],
     municipalitySelect: [''],
-    difficultyLevelSelect: ['',Validators.required]
+    difficultyLevelSelect: ['']
   });
 
   get communitySelect() { return this.searchForm.get('communitySelect'); }
@@ -55,7 +62,11 @@ export class SearchComponent  implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.searchForm.value);
+    this.search.community_id = Number(this.communitySelect?.value);
+    this.search.province_id = Number(this.provinceSelect?.value);
+    this.search.municipality_id = Number(this.municipalitySelect?.value);
+    // this.search.difficulty_level = this.difficultyLevelSelect?.value;
+    
   }
 
   onNewCommunity(idCommunity:number) {

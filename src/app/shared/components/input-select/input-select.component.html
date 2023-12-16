@@ -1,6 +1,8 @@
 <ion-item>
   <ion-label>{{ label }}</ion-label>
   <ion-select 
+    [(ngModel)]="selectValue"
+    (ngModelChange)="onChange($event)"
     (ionChange)="handleChange($event)"
     [placeholder]="placeholder" 
     class="custom-input">
