@@ -24,7 +24,8 @@ export class SearchResultsComponent  implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.hickingtrailService.searchHickingTrails(params).subscribe({
         next: (data) => {
-          this.hickingTrails = data;
+          console.log(data.data);
+          this.hickingTrails = data.data;
         },
         error: (error) => {
           console.log('error recuperando listado de senderos',error);

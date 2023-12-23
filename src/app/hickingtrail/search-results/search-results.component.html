@@ -4,9 +4,15 @@
 </app-navbar>
 <ion-content [fullscreen]="true">
   <ion-spinner color="primary" *ngIf="isLoading"></ion-spinner>
-  <app-hickingtrail-card
-    *ngFor="let hickingTrail of hickingTrails"
-    [hickingTrail]="hickingTrail"
-  >
-  </app-hickingtrail-card>
+  <div *ngIf="!isLoading && hickingTrails.length > 0">
+    <app-hickingtrail-card
+      *ngFor="let hickingTrail of hickingTrails"
+      [hickingTrail]="hickingTrail">
+    </app-hickingtrail-card>
+  </div>
+  <div *ngIf="!isLoading && hickingTrails.length === 0">
+    <ion-text color="primary">
+      <h2>No se encontraron resultados</h2>
+    </ion-text>
+  </div>
 </ion-content>

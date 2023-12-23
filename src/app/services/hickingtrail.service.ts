@@ -26,7 +26,7 @@ export class HickingtrailService {
     return this.httpClient.get<any[]>(`${this.baseUrl}/municipalities/${idProvince}`);
   }
 
-  searchHickingTrails(searchParams:any): Observable<any[]> {
-    return this.httpClient.post<any[]>(`${this.baseUrl}/hicking_trails/search`,searchParams);
+  searchHickingTrails(searchParams:any): Observable<any> {
+    return this.httpClient.post<any>(`${this.baseUrl}/hicking_trails/search`,searchParams);
   }
 }

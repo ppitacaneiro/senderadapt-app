@@ -12,6 +12,8 @@ export class HickingtrailCardComponent  implements OnInit {
   
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.hickingTrail);
+  }
 
 }
