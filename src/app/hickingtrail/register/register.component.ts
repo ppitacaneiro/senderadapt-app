@@ -7,6 +7,7 @@ import { Municipality } from 'src/app/interfaces/municipality';
 import { Province } from 'src/app/interfaces/province';
 import { Search } from 'src/app/interfaces/search';
 import { HickingtrailService } from 'src/app/services/hickingtrail.service';
+import { StorageService } from 'src/app/services/storage.service';
 import { ToastService } from 'src/app/services/toast.service';
 import { DIFFICULTY_LEVELS } from 'src/app/shared/constants/difficulty-levels';
 
@@ -31,7 +32,8 @@ export class RegisterComponent  implements OnInit {
     private hickingtrailService:HickingtrailService,
     private formBuilder:FormBuilder,
     private toastService:ToastService,
-    private router:Router
+    private router:Router,
+    private storageService: StorageService,
   ) { }
 
   searchForm = this.formBuilder.group({
@@ -66,7 +68,13 @@ export class RegisterComponent  implements OnInit {
     });
   }
 
-  onSubmit() {}
+  onSubmit() {
+    if (this.searchForm.valid) {
+
+    } else {
+      this.toastService.presentToast('');
+    }
+  }
 
   onNewCommunity(idCommunity:number) {
     this.hickingtrailService.getProvinces(idCommunity).subscribe({

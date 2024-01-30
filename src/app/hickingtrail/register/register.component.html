@@ -66,22 +66,21 @@
                 </ion-col>
               </ion-row>
               <ion-row>
-                <ion-row>
-                  <ion-col>
-                    <app-input-text
-                      [formControl]="searchForm.controls['destinationName']"
-                      formControlName="destinationName"
-                      [typeOfInput]="'text'"
-                      [labelText]="'Destino'"
-                      [placeHolderText]="'destino de la ruta'">
-                    </app-input-text>
-                  </ion-col>
-                </ion-row>
-                <ion-row>
+                <ion-col>
+                  <app-input-text
+                    [formControl]="searchForm.controls['destinationName']"
+                    formControlName="destinationName"
+                    [typeOfInput]="'text'"
+                    [labelText]="'Destino'"
+                    [placeHolderText]="'destino de la ruta'">
+                  </app-input-text>
+                </ion-col>
+              </ion-row>
+              <ion-row>
                 <ion-col>
                   <app-button-primary
                     [buttonType]="'submit'"
-                    [buttonText]="'Buscar Rutas'">
+                    [buttonText]="'Registrar'">
                   </app-button-primary>
                 </ion-col>
               </ion-row>
