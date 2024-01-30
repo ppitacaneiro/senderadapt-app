@@ -1,3 +1,94 @@
-<p>
-  register works!
-</p>
+<app-menunavbar>
+</app-menunavbar>
+<ion-content class="main">
+  <ion-spinner color="primary" *ngIf="isLoading"></ion-spinner>
+  <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">  
+    <ion-grid *ngIf="!isLoading">
+      <ion-row>
+        <ion-col>
+          <div class="search-form-container">
+            <ion-grid fixed>
+              <ion-row>
+                <ion-col>
+                  <app-input-select
+                    (newItemEvent)="onNewCommunity($event)"
+                    formControlName="communitySelect"
+                    [formControl]="searchForm.controls['communitySelect']"
+                    [placeholder]="'Seleccionar comunidad autónoma'"
+                    [options]="communities"
+                    [label]="'Comunidad autónoma'">
+                  </app-input-select>
+                </ion-col>
+              </ion-row>
+              <ion-row *ngIf="provinces.length > 0">
+                <ion-col>
+                  <app-input-select
+                    (newItemEvent)="onNewProvince($event)"
+                    formControlName="provinceSelect"
+                    [formControl]="searchForm.controls['provinceSelect']"
+                    [placeholder]="'Seleccionar provincia'"
+                    [options]="provinces"
+                    [label]="'Provincia'">
+                  </app-input-select>
+                </ion-col>
+              </ion-row>
+              <ion-row *ngIf="municipalities.length > 0">
+                <ion-col>
+                  <app-input-select
+                    formControlName="municipalitySelect"
+                    [formControl]="searchForm.controls['municipalitySelect']"
+                    [placeholder]="'Seleccionar Municipio'"
+                    [options]="municipalities"
+                    [label]="'Municipio'">
+                  </app-input-select>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <app-input-select
+                    formControlName="difficultyLevelSelect"
+                    [formControl]="searchForm.controls['difficultyLevelSelect']"
+                    [placeholder]="'Seleccionar Nivel de dificultad'"
+                    [options]="difficultyLevels"
+                    [label]="'Dificultad'">
+                  </app-input-select>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <app-input-text
+                    [formControl]="searchForm.controls['originName']"
+                    formControlName="originName"
+                    [typeOfInput]="'text'"
+                    [labelText]="'Origen'"
+                    [placeHolderText]="'origen de la ruta'">
+                  </app-input-text>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-row>
+                  <ion-col>
+                    <app-input-text
+                      [formControl]="searchForm.controls['destinationName']"
+                      formControlName="destinationName"
+                      [typeOfInput]="'text'"
+                      [labelText]="'Destino'"
+                      [placeHolderText]="'destino de la ruta'">
+                    </app-input-text>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                <ion-col>
+                  <app-button-primary
+                    [buttonType]="'submit'"
+                    [buttonText]="'Buscar Rutas'">
+                  </app-button-primary>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

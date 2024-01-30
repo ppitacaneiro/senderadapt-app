@@ -64,6 +64,11 @@ export class SearchComponent  implements OnInit {
     });
   }
 
+
+  register() {
+    this.router.navigate(['/hickingtrail/register']);
+  }
+
   onSubmit() {
     if (!this.searchForm.valid) {
       this.toastService.presentToast('Debe seleccionar una comunidad y un nivel de dificultad');

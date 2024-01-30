@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { SearchComponent } from './search/search.component';
 import { HickingtrailRoutingModule } from './hickingtrail-routing.module';
 import { HickingtrailCardComponent } from './shared/components/hickingtrail-card/hickingtrail-card.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { HickingtrailCardComponent } from './shared/components/hickingtrail-card
   declarations: [
     SearchComponent,
     SearchResultsComponent,
-    HickingtrailCardComponent
+    HickingtrailCardComponent,
+    RegisterComponent
   ],
 })
 export class HickingtrailModule { }

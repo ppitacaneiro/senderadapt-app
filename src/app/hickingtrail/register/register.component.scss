@@ -1,0 +1,16 @@
+.main {
+    --background: linear-gradient(180deg, rgba(194,255,184,1) 0%, rgba(63,124,84,1) 50%, rgba(25,57,78,1) 100%);
+}
+
+.search-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    margin-left: 15px;
+    margin-right: 15px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+}
