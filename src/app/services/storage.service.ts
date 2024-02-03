@@ -16,7 +16,10 @@ export class StorageService {
     this._storage = storage;
   }
 
-  public async set(key: string, value: any){
+  public async set(key: string, value: any) {
+    if (!this._storage) {
+      await this.init();
+    }
     await this._storage?.set(key, value);
   }
 
