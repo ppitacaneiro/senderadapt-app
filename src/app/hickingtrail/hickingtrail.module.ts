@@ -8,6 +8,7 @@ import { SearchComponent } from './search/search.component';
 import { HickingtrailRoutingModule } from './hickingtrail-routing.module';
 import { HickingtrailCardComponent } from './shared/components/hickingtrail-card/hickingtrail-card.component';
 import { RegisterComponent } from './register/register.component';
+import { StepsComponent } from './steps/steps.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { RegisterComponent } from './register/register.component';
     SearchComponent,
     SearchResultsComponent,
     HickingtrailCardComponent,
-    RegisterComponent
+    RegisterComponent,
+    StepsComponent,
   ],
 })
 export class HickingtrailModule { }

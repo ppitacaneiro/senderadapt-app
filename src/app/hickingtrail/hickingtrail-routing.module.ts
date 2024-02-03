@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SearchComponent } from './search/search.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { RegisterComponent } from './register/register.component';
+import { StepsComponent } from './steps/steps.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
+  },
+  {
+    path: 'steps/:uuid',
+    component: StepsComponent,
   },
   {
     path: '',
