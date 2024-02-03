@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Community } from 'src/app/interfaces/community';
 import { DifficultyLevel } from 'src/app/interfaces/difficulty-level';
+import { HickingtrailRegister } from 'src/app/interfaces/hickingtrail-register';
 import { Municipality } from 'src/app/interfaces/municipality';
 import { Province } from 'src/app/interfaces/province';
 import { Search } from 'src/app/interfaces/search';
@@ -10,6 +11,7 @@ import { HickingtrailService } from 'src/app/services/hickingtrail.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { ToastService } from 'src/app/services/toast.service';
 import { DIFFICULTY_LEVELS } from 'src/app/shared/constants/difficulty-levels';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-register',
@@ -27,6 +29,15 @@ export class RegisterComponent  implements OnInit {
     community_id: 0,
     difficulty_level: ''
   };
+  hickingtrailRegister: HickingtrailRegister = {
+    user_id: 0,
+    community_id: 0,
+    province_id: 0,
+    municipality_id: 0,
+    origin_name: '',
+    destination_name: '',
+    difficulty_level: ''
+  }
 
   constructor(
     private hickingtrailService:HickingtrailService,
@@ -74,7 +85,24 @@ export class RegisterComponent  implements OnInit {
       return;
     }
 
-    
+    this.storageService.get('user').then((user) => {
+      this.hickingtrailRegister.uuid = uuidv4();
+      this.hickingtrailRegister.user_id = user.id;
+      this.hickingtrailRegister.community_id = Number(this.searchForm.value.community_id);
+      this.hickingtrailRegister.province_id = Number(this.searchForm.value.province_id);
+      this.hickingtrailRegister.municipality_id = Number(this.searchForm.value.municipality_id);
+      this.hickingtrailRegister.origin_name = this.searchForm.value.origin_name!;
+      this.hickingtrailRegister.destination_name = this.searchForm.value.destination_name!;
+      this.hickingtrailRegister.difficulty_level = this.searchForm.value.difficulty_level!;
+
+      this.storageService.set('hickingtrail',this.hickingtrailRegister)
+        .then(() => {
+          this.router.navigate(['/hickingtrail/steps', this.hickingtrailRegister.uuid]);
+        })
+        .catch((err) => {
+          console.log('error guardando hickingtrail',err);
+        });
+    });
   }
 
   onNewCommunity(idCommunity:number) {
