@@ -1,0 +1,25 @@
+<app-menunavbar>
+</app-menunavbar>
+<ion-content class="main">
+  <ion-img src="../../assets/images/landscape.jpg" style="margin-bottom: 3rem;"></ion-img>
+  <div class="ion-text-center">
+    <div class="text-message">
+      <div class="ion-margin">
+        Pulsa el botón de <b>iniciar</b> para empezar a caminar.
+        Cuando termines la ruta, pulsa el botón de <b>finalizar</b>.
+        Los pasos que des se irán registrando automáticamente.
+      </div>
+    </div>
+    <ion-card #card class="ion-margin">
+      <ion-icon name="arrow-forward-outline" size="large" color="primary"></ion-icon>
+    </ion-card>
+    <div class="ion-margin ion-padding">
+      <ion-button 
+        [disabled]="isPlaying"
+        (click)="play()">
+        Iniciar
+      </ion-button>
+      <ion-button (click)="stop()">Finalizar</ion-button>
+    </div>
+  </div>
+</ion-content>
