@@ -1,3 +1,4 @@
+import { Photo } from "./photo";
 import { Step } from "./step";
 
 export interface HickingtrailRegister {
@@ -16,4 +17,5 @@ export interface HickingtrailRegister {
     destination_lng?: number;
     difficulty_level: string;
     steps?: Step[];
+    photos?: Photo[];
 }
