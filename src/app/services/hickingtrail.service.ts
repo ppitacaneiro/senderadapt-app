@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Community } from '../interfaces/community';
 import { Province } from '../interfaces/province';
+import { HickingtrailRegister } from '../interfaces/hickingtrail-register';
 
 @Injectable({
   providedIn: 'root'
@@ -28,5 +29,9 @@ export class HickingtrailService {
 
   searchHickingTrails(searchParams:any): Observable<any> {
     return this.httpClient.post<any>(`${this.baseUrl}/hicking_trails/search`,searchParams);
+  }
+
+  saveHickingTrail(hickingtrail:HickingtrailRegister): Observable<any> {
+    return this.httpClient.post<any>(`${this.baseUrl}/hicking_trails/store`,hickingtrail);
   }
 }
