@@ -37,18 +37,18 @@ export class RegisterComponent  implements OnInit {
   ) { }
 
   searchForm = this.formBuilder.group({
-    communitySelect: ['',Validators.required],
-    provinceSelect: [''],
-    municipalitySelect: [''],
-    difficultyLevelSelect: ['',Validators.required],
-    originName: ['',Validators.required],
-    destinationName: ['',Validators.required],
+    community_id: ['',Validators.required],
+    province_id: ['', Validators.required],
+    municipality_id: ['', Validators.required],
+    difficulty_level: ['',Validators.required],
+    origin_name: ['',Validators.required],
+    destination_name: ['',Validators.required],
   });
 
-  get communitySelect() { return this.searchForm.get('communitySelect'); }
-  get provinceSelect() { return this.searchForm.get('provinceSelect'); }
-  get municipalitySelect() { return this.searchForm.get('municipalitySelect'); }
-  get difficultyLevelSelect() { return this.searchForm.get('difficultyLevelSelect'); }
+  get communitySelect() { return this.searchForm.get('community_id'); }
+  get provinceSelect() { return this.searchForm.get('province_id'); }
+  get municipalitySelect() { return this.searchForm.get('municipality_id'); }
+  get difficultyLevelSelect() { return this.searchForm.get('difficulty_level'); }
 
   
   ngOnInit() {}
@@ -69,11 +69,12 @@ export class RegisterComponent  implements OnInit {
   }
 
   onSubmit() {
-    if (this.searchForm.valid) {
-
-    } else {
-      this.toastService.presentToast('');
+    if (!this.searchForm.valid) {
+      this.toastService.presentToast('Todos los campos del formulario son obligatios para continuar');
+      return;
     }
+
+    
   }
 
   onNewCommunity(idCommunity:number) {

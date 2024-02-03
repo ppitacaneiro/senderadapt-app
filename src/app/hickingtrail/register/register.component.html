@@ -12,8 +12,8 @@
                 <ion-col>
                   <app-input-select
                     (newItemEvent)="onNewCommunity($event)"
-                    formControlName="communitySelect"
-                    [formControl]="searchForm.controls['communitySelect']"
+                    formControlName="community_id"
+                    [formControl]="searchForm.controls['community_id']"
                     [placeholder]="'Seleccionar comunidad autónoma'"
                     [options]="communities"
                     [label]="'Comunidad autónoma'">
@@ -24,8 +24,8 @@
                 <ion-col>
                   <app-input-select
                     (newItemEvent)="onNewProvince($event)"
-                    formControlName="provinceSelect"
-                    [formControl]="searchForm.controls['provinceSelect']"
+                    formControlName="province_id"
+                    [formControl]="searchForm.controls['province_id']"
                     [placeholder]="'Seleccionar provincia'"
                     [options]="provinces"
                     [label]="'Provincia'">
@@ -35,8 +35,8 @@
               <ion-row *ngIf="municipalities.length > 0">
                 <ion-col>
                   <app-input-select
-                    formControlName="municipalitySelect"
-                    [formControl]="searchForm.controls['municipalitySelect']"
+                    formControlName="municipality_id"
+                    [formControl]="searchForm.controls['municipality_id']"
                     [placeholder]="'Seleccionar Municipio'"
                     [options]="municipalities"
                     [label]="'Municipio'">
@@ -46,8 +46,8 @@
               <ion-row>
                 <ion-col>
                   <app-input-select
-                    formControlName="difficultyLevelSelect"
-                    [formControl]="searchForm.controls['difficultyLevelSelect']"
+                    formControlName="difficulty_level"
+                    [formControl]="searchForm.controls['difficulty_level']"
                     [placeholder]="'Seleccionar Nivel de dificultad'"
                     [options]="difficultyLevels"
                     [label]="'Dificultad'">
@@ -57,8 +57,8 @@
               <ion-row>
                 <ion-col>
                   <app-input-text
-                    [formControl]="searchForm.controls['originName']"
-                    formControlName="originName"
+                    [formControl]="searchForm.controls['origin_name']"
+                    formControlName="origin_name"
                     [typeOfInput]="'text'"
                     [labelText]="'Origen'"
                     [placeHolderText]="'origen de la ruta'">
@@ -68,8 +68,8 @@
               <ion-row>
                 <ion-col>
                   <app-input-text
-                    [formControl]="searchForm.controls['destinationName']"
-                    formControlName="destinationName"
+                    [formControl]="searchForm.controls['destination_name']"
+                    formControlName="destination_name"
                     [typeOfInput]="'text'"
                     [labelText]="'Destino'"
                     [placeHolderText]="'destino de la ruta'">
