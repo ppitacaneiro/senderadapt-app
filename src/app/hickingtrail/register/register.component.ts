@@ -36,7 +36,8 @@ export class RegisterComponent  implements OnInit {
     municipality_id: 0,
     origin_name: '',
     destination_name: '',
-    difficulty_level: ''
+    difficulty_level: '',
+    photos: [],
   }
 
   constructor(
@@ -93,9 +94,11 @@ export class RegisterComponent  implements OnInit {
       this.hickingtrailRegister.municipality_id = Number(this.searchForm.value.municipality_id);
       this.hickingtrailRegister.origin_name = this.searchForm.value.origin_name!;
       this.hickingtrailRegister.destination_name = this.searchForm.value.destination_name!;
-      this.hickingtrailRegister.difficulty_level = this.searchForm.value.difficulty_level!;
+      this.hickingtrailRegister.difficulty_level = this.difficultyLevels.find(
+        (difficultyLevel) => difficultyLevel.id === Number(this.difficultyLevelSelect?.value)
+      )?.value || '';
 
-      this.storageService.set('hickingtrail',this.hickingtrailRegister)
+      this.storageService.set('hickingtrails',[this.hickingtrailRegister])
         .then(() => {
           this.router.navigate(['/hickingtrail/steps', this.hickingtrailRegister.uuid]);
         })
