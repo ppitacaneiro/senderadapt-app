@@ -41,10 +41,12 @@ export class LoginPage {
     this.userService.login(this.emailValue,this.passwordValue).subscribe({
       next: (response) => {
         if (response.success) {
-          this.storageService.set('token',response.data.token).then(() => {
+          Promise.all([
+            this.storageService.set('token',response.data.token),
+            this.storageService.set('user',response.data.user)
+          ]).then(() => {
             this.router.navigate(['/hickingtrail/search']);
-          })
-          .catch((err) => {
+          }).catch((err) => {
             console.log('error guardando token',err);
           });
         }
